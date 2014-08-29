@@ -1,0 +1,10 @@
+c:\documents and settings\cheat\мои документы\visual studio 2010\Projects\tqanks1\tqanks1\bin\Debug\tqanks1.exe
+c:\documents and settings\cheat\мои документы\visual studio 2010\Projects\tqanks1\tqanks1\bin\Debug\tqanks1.pdb
+c:\documents and settings\cheat\мои документы\visual studio 2010\Projects\tqanks1\tqanks1\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\documents and settings\cheat\мои документы\visual studio 2010\Projects\tqanks1\tqanks1\obj\x86\Debug\GenerateResource.read.1.tlog
+c:\documents and settings\cheat\мои документы\visual studio 2010\Projects\tqanks1\tqanks1\obj\x86\Debug\GenerateResource.write.1.tlog
+c:\documents and settings\cheat\мои документы\visual studio 2010\Projects\tqanks1\tqanks1\obj\x86\Debug\tqanks1.exe
+c:\documents and settings\cheat\мои документы\visual studio 2010\Projects\tqanks1\tqanks1\obj\x86\Debug\tqanks1.pdb
+c:\documents and settings\cheat\мои документы\visual studio 2010\Projects\tqanks1\tqanks1\bin\Debug\Imgs\lt3.png
+C:\Documents and Settings\cheat\мои документы\visual studio 2010\Projects\tqanks1\tqanks1\obj\x86\Debug\Tanks.Form1.resources
+C:\Documents and Settings\cheat\мои документы\visual studio 2010\Projects\tqanks1\tqanks1\obj\x86\Debug\Tanks.Properties.Resources.resources
