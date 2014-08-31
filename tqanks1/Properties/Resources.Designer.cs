@@ -60,9 +60,23 @@ namespace Tanks.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap _640px_BulletBillMK8 {
+            get {
+                object obj = ResourceManager.GetObject("_640px_BulletBillMK8", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap bm {
             get {
                 object obj = ResourceManager.GetObject("bm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap bullets_PNG1459 {
+            get {
+                object obj = ResourceManager.GetObject("bullets_PNG1459", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
