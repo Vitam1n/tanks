@@ -18,3 +18,22 @@ C:\Documents and Settings\cheat\Мои документы\Visual Studio 2010\Pro
 C:\Documents and Settings\cheat\Мои документы\Visual Studio 2010\Projects\tanks1\tqanks1\obj\x86\Debug\Tanks.Properties.Resources.resources
 C:\Documents and Settings\cheat\Мои документы\Visual Studio 2010\Projects\tanks1\tqanks1\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Documents and Settings\cheat\Мои документы\Visual Studio 2010\Projects\tanks1\tqanks1\obj\x86\Debug\GenerateResource.write.1.tlog
+d:\Profiles\06082\Desktop\tanks1\tqanks1\obj\x86\Debug\tqanks1.exe
+d:\Profiles\06082\Desktop\tanks1\tqanks1\obj\x86\Debug\tqanks1.pdb
+d:\Profiles\06082\Desktop\tanks1\tqanks1\bin\Debug\Imgs\lt3.png
+d:\Profiles\06082\Desktop\tanks1\tqanks1\bin\Debug\tqanks1.exe
+d:\Profiles\06082\Desktop\tanks1\tqanks1\bin\Debug\tqanks1.pdb
+d:\Profiles\06082\Desktop\tanks1\tqanks1\obj\x86\Debug\tanks1.csprojResolveAssemblyReference.cache
+d:\Profiles\06082\Desktop\tanks1\tqanks1\obj\x86\Debug\Tanks.Form1.resources
+d:\Profiles\06082\Desktop\tanks1\tqanks1\obj\x86\Debug\Tanks.Properties.Resources.resources
+d:\Profiles\06082\Desktop\tanks1\tqanks1\obj\x86\Debug\tanks1.csproj.GenerateResource.Cache
+C:\Documents and Settings\cheat\Рабочий стол\tanks1\tqanks1\obj\x86\Debug\tqanks1.exe
+C:\Documents and Settings\cheat\Рабочий стол\tanks1\tqanks1\obj\x86\Debug\tqanks1.pdb
+C:\Documents and Settings\cheat\Рабочий стол\tanks1\tqanks1\bin\Debug\Imgs\lt3.png
+C:\Documents and Settings\cheat\Рабочий стол\tanks1\tqanks1\bin\Debug\tqanks1.exe
+C:\Documents and Settings\cheat\Рабочий стол\tanks1\tqanks1\bin\Debug\tqanks1.pdb
+C:\Documents and Settings\cheat\Рабочий стол\tanks1\tqanks1\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\cheat\Рабочий стол\tanks1\tqanks1\obj\x86\Debug\Tanks.Form1.resources
+C:\Documents and Settings\cheat\Рабочий стол\tanks1\tqanks1\obj\x86\Debug\Tanks.Properties.Resources.resources
+C:\Documents and Settings\cheat\Рабочий стол\tanks1\tqanks1\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\cheat\Рабочий стол\tanks1\tqanks1\obj\x86\Debug\GenerateResource.write.1.tlog

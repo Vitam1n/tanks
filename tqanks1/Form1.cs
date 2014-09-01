@@ -7,8 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections;
-using System.Runtime.InteropServices;
-using System.Reflection;
 
 //дивжение ?
 // координаты для оружие (не в дэд-ендах)
@@ -17,19 +15,13 @@ namespace Tanks
 {
     public partial class Form1 : Form
     {
-        [DllImport("user32.dll")]
-        static extern IntPtr GetDC(IntPtr hWnd);
-        [DllImport("gdi32.dll")]
-        static extern int GetPixel(IntPtr hDC, int x, int y);
-        [DllImport("user32.dll")]
-        static extern int ReleaseDC(IntPtr hWnd, IntPtr hDC);
-
         //private int x2, y2;
 
         public static int ClientWidth;
         public static int ClientHeight;
         public static int FormWidth;
         public static int FormHeight;
+        public static IntPtr FormHandle {get; private set;}
 
         Tank tank;
         Maze theMaze;
@@ -37,6 +29,7 @@ namespace Tanks
         public Form1()
         {
             InitializeComponent();
+            FormHandle = this.Handle;
             ClientWidth = this.ClientSize.Width; //this.Width
             ClientHeight = this.ClientSize.Height;
 
@@ -52,66 +45,22 @@ namespace Tanks
             //вычислить координатную сетку либо отказаться от идеи поворачивать танк на градус; срочно добавить оружие и начать делать сервак
             e.Graphics.ResetTransform();
             e.Graphics.TranslateTransform(tank.X1, tank.Y1);
-            e.Graphics.FillEllipse(Brushes.AliceBlue, 0, 0, 0, 0);
-            if (tank.shot)
-            {
-                e.Graphics.DrawImage(tank.particle, 30, 30);
-            }
+            //e.Graphics.FillEllipse(Brushes.Red, 0, 0, 10, 10);
+            
             e.Graphics.RotateTransform(tank.angle);
             //e.Graphics.DrawImage(tank.tank, tank.X1, tank.Y1);
-            e.Graphics.DrawImage(tank.tank, -tank.size.Width/1.5f, -20);
+            //e.Graphics.DrawImage(tank.tank, -(float)theMaze.CellHeight/3, -(float)theMaze.CellWidth/2);
+            e.Graphics.DrawImage(tank.tank, -(float)tank.size.Width / 2, -(float)tank.size.Height / 2);
+            if (tank.shot)
+            {
+                e.Graphics.ResetTransform();
+                e.Graphics.TranslateTransform(tank.shotX, tank.shotY);
+                e.Graphics.DrawImage(tank.particle, 0, 0);
+            }
+            //e.Graphics.FillEllipse(Brushes.Red, 0, 0, 10, 10);
+            //e.Graphics.DrawImage(tank.tank, -(float)tank.size.Width / 2, -(float)tank.size.Height / 2);
             e.Graphics.ResetTransform();
             theMaze.DrawMaze(e);
-            
-            //Color color1 = Color.Empty;
-            //Color color2 = Color.Empty;
-            //Color color3 = Color.Empty;
-            //Color color4 = Color.Empty;
-
-            //IntPtr hDC = GetDC(this.Handle);
-            //int colorRef1 = GetPixel(hDC, tank.X1, tank.Y1);
-
-            //int colorRef2 = GetPixel(hDC, tank.X1 + tank.size.Width, tank.Y1);
-            //int colorRef3 = GetPixel(hDC, tank.X1, tank.Y1 + tank.size.Height);
-            //int colorRef4 = GetPixel(hDC, tank.X1 + tank.size.Width, tank.Y1 + tank.size.Height);
-
-            //color1 = Color.FromArgb(
-            //(int)(colorRef1 & 0x000000FF),
-            //(int)(colorRef1 & 0x0000FF00) >> 8,
-            //(int)(colorRef1 & 0x00FF0000) >> 16);
-            //ReleaseDC(this.Handle, hDC);
-
-            //color2 = Color.FromArgb(
-            //        (int)(colorRef2 & 0x000000FF),
-            //        (int)(colorRef2 & 0x0000FF00) >> 8,
-            //        (int)(colorRef2 & 0x00FF0000) >> 16);
-            //ReleaseDC(this.Handle, hDC);
-
-            //color3 = Color.FromArgb(
-            //                (int)(colorRef3 & 0x000000FF),
-            //                (int)(colorRef3 & 0x0000FF00) >> 8,
-            //                (int)(colorRef3 & 0x00FF0000) >> 16);
-            //ReleaseDC(this.Handle, hDC);
-
-            //color4 = Color.FromArgb(
-            //                (int)(colorRef4 & 0x000000FF),
-            //                (int)(colorRef4 & 0x0000FF00) >> 8,
-            //                (int)(colorRef4 & 0x00FF0000) >> 16);
-            //ReleaseDC(this.Handle, hDC);
-            //if (GetColorName(color1) == Color.Gray.Name || GetColorName(color2) == Color.Gray.Name
-            //    || GetColorName(color3) == Color.Gray.Name || GetColorName(color4) == Color.Gray.Name)
-            //{
-            //    this.Text = "yes!";
-            //}
-            //else
-            //    this.Text = "Tanks";
-        }
-
-        //http://stackoverflow.com/questions/10875874/c-sharp-color-name-from-argb
-        Dictionary<String, Color> colors = typeof(Color).GetProperties(BindingFlags.Static | BindingFlags.Public).ToDictionary(p => p.Name, p => (Color)p.GetValue(null, null));
-        public String GetColorName(Color color)
-        {
-            return colors.Where(c => c.Value.A == color.A && c.Value.R == color.R && c.Value.G == color.G && c.Value.B == color.B).FirstOrDefault().Key;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
