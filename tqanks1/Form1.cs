@@ -16,12 +16,11 @@ namespace Tanks
     public partial class Form1 : Form
     {
         //private int x2, y2;
-
         public static int ClientWidth;
         public static int ClientHeight;
         public static int FormWidth;
         public static int FormHeight;
-        public static IntPtr FormHandle {get; private set;}
+        public static IntPtr FormHandle { get; private set; }
 
         Tank tank;
         Maze theMaze;
@@ -46,15 +45,33 @@ namespace Tanks
             e.Graphics.ResetTransform();
             e.Graphics.TranslateTransform(tank.X1, tank.Y1);
             //e.Graphics.FillEllipse(Brushes.Red, 0, 0, 10, 10);
-            
+
             e.Graphics.RotateTransform(tank.angle);
             //e.Graphics.DrawImage(tank.tank, tank.X1, tank.Y1);
             //e.Graphics.DrawImage(tank.tank, -(float)theMaze.CellHeight/3, -(float)theMaze.CellWidth/2);
             e.Graphics.DrawImage(tank.tank, -(float)tank.size.Width / 2, -(float)tank.size.Height / 2);
             if (tank.shot)
             {
+                tank.BulletFly();
                 e.Graphics.ResetTransform();
                 e.Graphics.TranslateTransform(tank.shotX, tank.shotY);
+                switch (tank.bulletDir)
+                {
+                        //момент выстрела и время полета пули - это РАЗНЫЕ величины, и обрабатывать их нужно по-разному!
+                    case Directions.Down:
+                        e.Graphics.RotateTransform(90);
+                        //e.Graphics.TranslateTransform(0, -tank.tank.Width);
+                        break;
+                    case Directions.Left:
+                        e.Graphics.RotateTransform(180);
+                        break;
+                    case Directions.Right:
+                        e.Graphics.RotateTransform(0);
+                        break;
+                    case Directions.Up:
+                        e.Graphics.RotateTransform(270);
+                        break;
+                }
                 e.Graphics.DrawImage(tank.particle, 0, 0);
             }
             //e.Graphics.FillEllipse(Brushes.Red, 0, 0, 10, 10);
@@ -151,7 +168,6 @@ namespace Tanks
 
             #endregion
             tank.Move(e);
-            this.Invalidate();
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -175,6 +191,11 @@ namespace Tanks
                     tank.down = false;
                     break;
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.Invalidate();
         }
     }
 }
