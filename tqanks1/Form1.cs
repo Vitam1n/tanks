@@ -21,6 +21,7 @@ namespace Tanks
         public static int FormWidth;
         public static int FormHeight;
         public static IntPtr FormHandle { get; private set; }
+        public static string T;
 
         Tank tank;
         Maze theMaze;
@@ -31,7 +32,7 @@ namespace Tanks
             FormHandle = this.Handle;
             ClientWidth = this.ClientSize.Width; //this.Width
             ClientHeight = this.ClientSize.Height;
-
+            T = this.Text;
             FormWidth = this.Width;
             FormHeight = this.Height;
 
@@ -43,36 +44,45 @@ namespace Tanks
         {
             //вычислить координатную сетку либо отказаться от идеи поворачивать танк на градус; срочно добавить оружие и начать делать сервак
             e.Graphics.ResetTransform();
-            e.Graphics.TranslateTransform(tank.X1, tank.Y1);
+            e.Graphics.TranslateTransform((float)tank.X1, (float)tank.Y1);
             //e.Graphics.FillEllipse(Brushes.Red, 0, 0, 10, 10);
 
             e.Graphics.RotateTransform(tank.angle);
             //e.Graphics.DrawImage(tank.tank, tank.X1, tank.Y1);
             //e.Graphics.DrawImage(tank.tank, -(float)theMaze.CellHeight/3, -(float)theMaze.CellWidth/2);
-            e.Graphics.DrawImage(tank.tank, -(float)tank.size.Width / 2, -(float)tank.size.Height / 2);
+            if ((string)tank.tank.Tag != "destroyed")
+                e.Graphics.DrawImage(tank.tank, -(float)tank.size.Width / 2, -(float)tank.size.Height / 2);
             if (tank.shot)
             {
                 tank.BulletFly();
                 e.Graphics.ResetTransform();
                 e.Graphics.TranslateTransform(tank.shotX, tank.shotY);
-                switch (tank.bulletDir)
+                switch (tank.bulletDir) //момент выстрела и время полета пули - это РАЗНЫЕ величины, и обрабатывать их нужно по-разному!
                 {
-                        //момент выстрела и время полета пули - это РАЗНЫЕ величины, и обрабатывать их нужно по-разному!
                     case Directions.Down:
                         e.Graphics.RotateTransform(90);
-                        //e.Graphics.TranslateTransform(0, -tank.tank.Width);
+                        if(tank.rotate1 == false)
+                            e.Graphics.TranslateTransform(0, -tank.size.Width + 5);//tank.tank.Width);
                         break;
                     case Directions.Left:
-                        e.Graphics.RotateTransform(180);
+                        //e.Graphics.RotateTransform(180);
+                        //if (tank.rotate4 == false)
+                        //{
+                        //    e.Graphics.TranslateTransform(-tank.size.Width, 0);//tank.tank.Width);
+                        //    e.Graphics.FillEllipse(Brushes.Red, 0, 0, 10, 10);
+                        //}
                         break;
                     case Directions.Right:
                         e.Graphics.RotateTransform(0);
                         break;
                     case Directions.Up:
                         e.Graphics.RotateTransform(270);
+                        if(tank.rotate2 == false)
+                            e.Graphics.TranslateTransform(0, -tank.size.Width + 5);//tank.tank.Width);
                         break;
                 }
-                e.Graphics.DrawImage(tank.particle, 0, 0);
+                if ((string)tank.tank.Tag != "destroyed")
+                    e.Graphics.DrawImage(tank.particle, 0, 0);
             }
             //e.Graphics.FillEllipse(Brushes.Red, 0, 0, 10, 10);
             //e.Graphics.DrawImage(tank.tank, -(float)tank.size.Width / 2, -(float)tank.size.Height / 2);
